@@ -1,0 +1,33 @@
+#1 Add to cart button on categories page (attributes set as first one in array)
+#2 Add to cart button on single product (with attributes working)
+#3 Place order button working in this way
+# mutation {
+#   newOrder(order: [
+#     {
+#       id: "apple-imac-2021",
+#       count: 4,
+#       attributes: [
+#         {
+#             attribute_id: "Yes",
+#             attribute_set_id: "With USB 3 ports"
+#         },
+#         {
+#             attribute_id: "Yes",
+#             attribute_set_id: "Touch ID in keyboard"
+#         },
+#         {
+#             attribute_id: "Capacity",
+#             attribute_set_id: "256G"
+#         },
+#       ]
+#     }
+#   ])
+# }
+#4 Image slider clickable images on the side
+#5 Refactor everything, mainly cart functionality I think
+
+#1 DONE
+#2 DONE
+#3 DONE
+#4 DONE
+#5
