@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
+
+const cache = new InMemoryCache();
+const link = new HttpLink({
+  uri: 'https://french-locations.000webhostapp.com/graphql'
+});
 
 const client = new ApolloClient({
-    uri: 'https://french-locations.000webhostapp.com/graphql',
-    fetchOptions: { 
-      mode: 'no-cors' 
-    },
-  cache: new InMemoryCache(),
+  cache,
+  link,
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
