@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-    uri: 'http://french-locations.000webhostapp.com/graphql',
+    uri: 'https://french-locations.000webhostapp.com/graphql',
     cache: new InMemoryCache(),
 });
 
