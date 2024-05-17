@@ -7,7 +7,10 @@ import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/c
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
-  uri: 'https://french-locations.000webhostapp.com/graphql'
+  uri: 'https://french-locations.000webhostapp.com/graphql',
+  fetchOptions: {
+    mode: 'no-cors', // no-cors, *cors, same-origin
+ }
 });
 
 const client = new ApolloClient({
