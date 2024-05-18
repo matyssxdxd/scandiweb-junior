@@ -1,7 +1,7 @@
 import NavigateBackIcon from "./NavigateBackIcon";
 import NavigateNextIcon from "./NavigateNextIcon";
 
-export default function Gallery({ imageUrl, swipeRight, swipeLeft }) {
+export default function Gallery({ imageUrl, swipeRight, swipeLeft, addImageFallback }) {
   return (
     <div className="relative" style={{ height: "478px", width: "575px" }}>
       <button
@@ -20,6 +20,7 @@ export default function Gallery({ imageUrl, swipeRight, swipeLeft }) {
         className="relative object-contain"
         style={{ height: "478px", width: "575px" }}
         src={imageUrl}
+        onError={addImageFallback}
         alt="small-product-img"
       />
     </div>

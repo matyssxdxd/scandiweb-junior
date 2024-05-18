@@ -20,6 +20,11 @@ export default function Slider({ gallery }) {
     setImgIndex(index);
   } 
 
+  const addImageFallback = (event) => {
+    event.currentTarget.src =
+      "https://static.vecteezy.com/system/resources/thumbnails/022/014/063/small_2x/missing-picture-page-for-website-design-or-mobile-app-design-no-image-available-icon-vector.jpg";
+  };
+
   return (
     <div className="flex gap-10">
       <div
@@ -30,6 +35,7 @@ export default function Slider({ gallery }) {
           <SmallGallery
             key={galleryElement.image_url}
             imageUrl={galleryElement.image_url}
+            addImageFallback={addImageFallback}
             style={{ marginBottom: "10px" }}
             handleClick={() => handleSmallGalleryClick(index)}
           />
@@ -39,6 +45,7 @@ export default function Slider({ gallery }) {
         imageUrl={gallery[imgIndex].image_url}
         swipeRight={swipeRight}
         swipeLeft={swipeLeft}
+        addImageFallback={addImageFallback}
       />
     </div>
   );

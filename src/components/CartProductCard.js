@@ -19,6 +19,11 @@ export default function CartProductCard({ item, index }) {
     setCart(updatedCart);
   }
 
+  const addImageFallback = (event) => {
+    event.currentTarget.src =
+      "https://static.vecteezy.com/system/resources/thumbnails/022/014/063/small_2x/missing-picture-page-for-website-design-or-mobile-app-design-no-image-available-icon-vector.jpg";
+  };
+
   return (
     <div key={index} className="grid grid-cols-7 mb-10 gap-1">
       <div className="col-span-4">
@@ -92,6 +97,7 @@ export default function CartProductCard({ item, index }) {
         className="p col-span-2 h-full w-full object-cover"
         src={item.picture}
         alt="product-img"
+        onError={addImageFallback}
       ></img>
     </div>
   );
