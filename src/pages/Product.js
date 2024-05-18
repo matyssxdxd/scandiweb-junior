@@ -5,6 +5,7 @@ import { gql, useQuery } from "@apollo/client";
 import parse from "html-react-parser";
 import Slider from "../components/Slider";
 import useLocalStorageState from "use-local-storage-state";
+import Loading from "../components/Loading";
 
 export default function Product() {
   let { productId } = useParams();
@@ -131,7 +132,7 @@ export default function Product() {
         )}
         <div className="container relative pt-28">
           {loading ? (
-            <p>Loading</p>
+            <Loading />
           ) : data ? (
             <div className="grid grid-cols-5 mt-16">
               <div className="col-span-3">

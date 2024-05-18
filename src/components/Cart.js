@@ -2,9 +2,11 @@ import { useMutation } from "@apollo/client";
 import useLocalStorageState from "use-local-storage-state";
 import { PLACE_ORDER_MUTATION } from "./PlaceOrder";
 import CartProductCard from "./CartProductCard";
+import { useState } from "react";
 
 export default function Cart() {
   const [cart, setCart] = useLocalStorageState("cart");
+  const [loading, setLoading] = useState(false);
 
   const [placeOrder] = useMutation(PLACE_ORDER_MUTATION);
 
@@ -17,15 +19,22 @@ export default function Cart() {
         attribute_set_id: attribute.id,
       })),
     }));
+    
+    setLoading(true);
 
     placeOrder({
       variables: {
         order: cartItems,
       },
-    }).then(() => {
-      setCart([]);
-    });
+    })
+      .then(() => {
+        setCart([]);
+      })
+      .catch((error) => {
+        console.error("Error placing order:", error);
+      });
   }
+  
 
   return (
     <div
@@ -53,11 +62,11 @@ export default function Cart() {
       <button
         onClick={handlePlaceOrder}
         className={`--font-raleway w-full leading-5 mb-8 py-3 px-4 text-sm font-semibold ${
-          cart.length === 0
+          cart.length === 0 || loading
             ? "bg-gray-300 text-gray-500 cursor-not-allowed"
             : "bg-green-400 text-white"
         }`}
-        disabled={cart.length === 0}
+        disabled={cart.length === 0 || loading}
       >
         PLACE ORDER
       </button>

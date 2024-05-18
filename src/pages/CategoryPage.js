@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { CATEGORY_QUERIES } from "../components/CategoryQueries";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
+import Loading from "../components/Loading";
 
 export default function CategoryPage({ category }) {
   const QUERY = CATEGORY_QUERIES[category];
@@ -79,7 +80,7 @@ export default function CategoryPage({ category }) {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 place-items-center mb-60">
             {loading ? (
-              <p>Loading...</p>
+              <Loading />
             ) : data ? (
               products.map((product) => (
                 <ProductCard

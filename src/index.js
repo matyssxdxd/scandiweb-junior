@@ -5,17 +5,22 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 
-const cache = new InMemoryCache();
-const link = new HttpLink({
-  uri: 'https://french-locations.000webhostapp.com/graphql',
-  fetchOptions: {
-    mode: 'no-cors', // no-cors, *cors, same-origin
- }
-});
+const customFetch = (uri, options) => {
+  const requestBody = JSON.parse(options.body);
+  return fetch(
+    "https://french-locations.000webhostapp.com/graphql",
+    {
+      method: "POST",
+      body: JSON.stringify(requestBody)
+    }
+  );
+};
+
+const link = new HttpLink({ fetch: customFetch, fetchOptions: { mode: 'no-cors'} });
 
 const client = new ApolloClient({
-  cache,
-  link,
+  link: link,
+  cache: new InMemoryCache(),
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
