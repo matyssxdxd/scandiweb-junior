@@ -5,7 +5,8 @@ export default function CartButton({ handleCartClick }) {
   const [cart] = useLocalStorageState("cart");
 
   return (
-    <button onClick={handleCartClick}>
+    <>
+    {cart &&     <button onClick={handleCartClick}>
       <CartIcon />
       <div
         className={
@@ -16,6 +17,7 @@ export default function CartButton({ handleCartClick }) {
           {cart.length}
         </span>
       </div>
-    </button>
+    </button>}
+    </>
   );
 }

@@ -16,7 +16,7 @@ export default function CategoryPage({ category }) {
     console.log(products);
   }
 
-  const [cart, setCart] = useLocalStorageState("cart", []);
+  const [cart, setCart] = useLocalStorageState("cart", { defaultValue: [] });
   const [isCartHidden, setIsCartHidden] = useState(true);
 
   function handleCartClick() {

@@ -42,7 +42,7 @@ export default function Product() {
   `;
 
   const { data, loading, error } = useQuery(PRODUCT_QUERY);
-  const [cart, setCart] = useLocalStorageState("cart", []);
+  const [cart, setCart] = useLocalStorageState("cart", { defaultValue: [] });
   const [isCartHidden, setIsCartHidden] = useState(true);
   const [selectedAttributes, setSelectedAttributes] = useState([]);
 

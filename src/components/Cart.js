@@ -37,7 +37,9 @@ export default function Cart() {
   
 
   return (
-    <div
+    <>
+    {cart && (
+      <div
       className="absolute bg-white z-20 right-0 top-20 p-4 overflow-y-auto"
       style={{ width: "325px", maxHeight: "calc(100vh - 120px)" }}
     >
@@ -71,5 +73,7 @@ export default function Cart() {
         PLACE ORDER
       </button>
     </div>
+    )}
+  </>
   );
 }
